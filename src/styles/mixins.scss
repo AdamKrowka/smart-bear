@@ -1,0 +1,27 @@
+@mixin container() {
+  max-width: 1570px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@function calculateRem($size) {
+  $remSize: #{$size}px / 16px;
+  @return $remSize;
+}
+
+@mixin text(
+  $size: $font-size-base,
+  $weight: normal,
+  $line-height: 24,
+  $color: $black
+) {
+  font-size: #{$size}px; //Fallback in px
+  font-weight: $weight;
+  line-height: #{$line-height}px;
+  color: $color;
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}

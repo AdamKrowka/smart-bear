@@ -1,0 +1,50 @@
+@import "./globals.scss";
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: "Montserrat", sans-serif;
+  background-color: $bgColor;
+  overflow-x: hidden;
+
+  &.noScroll {
+    overflow: hidden;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  @include text(14, 600, 20, $blue700);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

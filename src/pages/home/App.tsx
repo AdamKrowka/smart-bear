@@ -1,6 +1,5 @@
 import { useSwaggerQuery } from "../../api/swagger";
 import "./App.css";
-
 function App() {
   const { data } = useSwaggerQuery();
   if (!data) return <div>no data</div>;

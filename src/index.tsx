@@ -1,9 +1,11 @@
+import "./styles/globals.scss";
+import "./styles/reset.scss";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/global.css";
 import reportWebVitals from "./reportWebVitals";
 import AppRouterProvider from "./router/router";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Layout from "./layout/layout";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <AppRouterProvider />
+      <Layout>
+        <AppRouterProvider />
+      </Layout>
     </QueryClientProvider>
   </React.StrictMode>
 );
