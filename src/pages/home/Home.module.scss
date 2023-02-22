@@ -1,1 +1,8 @@
+@import "styles/globals.scss";
 
+.home {
+  .title {
+    @include text(24, 600, 32, $grey900);
+    padding: 20px 0;
+  }
+}

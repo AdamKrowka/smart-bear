@@ -1,0 +1,33 @@
+@import "styles/globals.scss";
+
+.path {
+}
+.pathsItem {
+  margin-bottom: 24px;
+  border: 1px solid $grey200;
+  border-radius: 14px;
+  box-shadow: $shadowSm;
+  background-color: $white;
+
+  .heading {
+    padding: 10px 20px;
+    border-bottom: 1px solid $grey200;
+    .headingButton {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      cursor: pointer;
+      h3 {
+        @include text(16, 600, 24, $grey900);
+        text-transform: capitalize;
+      }
+      p {
+        @include text(14, 400, 20, $grey600);
+      }
+    }
+  }
+
+  .body {
+    padding: 10px 20px;
+  }
+}
