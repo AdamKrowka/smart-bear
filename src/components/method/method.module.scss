@@ -1,0 +1,55 @@
+@import "styles/globals.scss";
+
+.method {
+  margin-bottom: 24px;
+  box-shadow: $shadowSm;
+  &.get {
+    background: $blue50;
+  }
+  &.post {
+    background: $success50;
+  }
+  &.delete {
+    background: $error50;
+  }
+  &.put {
+    background: $warning50;
+  }
+  &.deprecated {
+    background: $grey50;
+    opacity: 0.5;
+  }
+  .heading {
+    .headingButton {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      @include text(16, 400, 24);
+      .methodName {
+        @include text(16, 600, 24);
+
+        &.get {
+          color: $blue500;
+        }
+        &.post {
+          color: $success500;
+        }
+        &.delete {
+          color: $error500;
+        }
+        &.put {
+          color: $warning500;
+        }
+      }
+      .methodDesc {
+        @include text(14, 400, 20, $grey600);
+      }
+      .deprecated {
+        @include text(16, 600, 24, $error500);
+        margin-left: auto;
+      }
+    }
+  }
+}

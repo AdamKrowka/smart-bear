@@ -41,6 +41,7 @@ export interface PathMethod {
   parameters: Parameter[];
   responses: Record<string, Response>;
   security: Array<Record<string, Array<string>>>;
+  deprecated?: boolean;
 }
 export interface Response {
   description: string;
