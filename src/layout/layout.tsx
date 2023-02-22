@@ -1,11 +1,11 @@
 import { useMemo } from "react";
-import { useSwaggerQuery } from "../api/swagger";
+import { useAppContext } from "utils/appContext";
 import styles from "./layout.module.scss";
 interface LayoutProps {
   children: React.ReactNode;
 }
 const Layout = ({ children }: LayoutProps) => {
-  const { data } = useSwaggerQuery();
+  const { data } = useAppContext();
 
   const description = useMemo(() => {
     if (!data) return "";

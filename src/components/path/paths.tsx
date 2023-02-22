@@ -1,14 +1,11 @@
-import { PathsByTag } from "pages/home/Home";
 import styles from "./path.module.scss";
-import { Method, PathMethod } from "types/api.types";
-
 import {
-  Accordion,
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
   AccordionItemPanel,
 } from "react-accessible-accordion";
+import { PathsByTag } from "utils/appContext";
 
 interface PathsProps {
   paths: PathsByTag;

@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import AppRouterProvider from "./router/router";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Layout from "./layout/layout";
+import { AppContextProvider } from "utils/appContext";
 
 const queryClient = new QueryClient();
 
@@ -15,9 +16,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Layout>
-        <AppRouterProvider />
-      </Layout>
+      <AppContextProvider>
+        <Layout>
+          <AppRouterProvider />
+        </Layout>
+      </AppContextProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
