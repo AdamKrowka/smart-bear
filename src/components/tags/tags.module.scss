@@ -1,0 +1,30 @@
+@import "styles/globals.scss";
+
+.tags {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  align-items: center;
+  span {
+    @include text(14, 600, 20, $grey500);
+  }
+  .tag {
+    padding: 8px 12px;
+
+    box-shadow: 0;
+    background: $grey100;
+    border-radius: 6px;
+    transition: all ease-in-out 0.2s;
+    @include text(14, 600, 20, $grey500);
+    &.active,
+    &:hover {
+      box-shadow: $shadowSm;
+      background: #ffffff;
+      @include text(14, 600, 20, $grey700);
+    }
+    &:hover:not(&.active) {
+      background: $grey200;
+      @include text(14, 600, 20, $grey500);
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "../pages/home/App";
+import App from "../pages/home/Home";
 
 const sitemap = {
   home: "/",
