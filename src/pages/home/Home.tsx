@@ -12,7 +12,7 @@ function App() {
   return (
     <div className={styles.home}>
       <Tags tags={tags} activeTags={activeTags} setActiveTags={setActiveTags} />
-      <Card>
+      <Card title="Paths">
         <pre>{JSON.stringify(rest, null, 4)}</pre>
       </Card>
     </div>
