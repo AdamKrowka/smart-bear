@@ -1,0 +1,58 @@
+@import "styles/globals.scss";
+
+.definitions {
+  .definitionName {
+    background-color: $blue50;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
+
+.definition {
+  padding: 12px;
+  margin: 0 0 12px 0;
+  border: 1px solid $grey200;
+  gap: 12px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  .defInfo {
+    display: flex;
+    flex-direction: column;
+
+    .defName {
+      @include text(14, 500, 20, $grey700);
+    }
+    .defType {
+      @include text(14, 400, 20, $grey600);
+    }
+  }
+  .defContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    .property {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 12px;
+      border-bottom: 1px solid $grey200;
+      width: 100%;
+
+      .propertyContent {
+        @include text(14, 400, 20, $grey600);
+        margin: 12px 0;
+        .enum {
+          display: flex;
+          gap: 12px;
+          .enumOptions {
+            display: flex;
+            gap: 6px;
+          }
+        }
+      }
+    }
+  }
+}

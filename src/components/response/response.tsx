@@ -1,7 +1,6 @@
 import Card from "components/card/card";
 import SchemaLink from "components/schemaLink/schemaLink";
-import { useMemo } from "react";
-import { Parameter, Response } from "types/api.types";
+import { Response } from "types/api.types";
 import styles from "./response.module.scss";
 
 interface ResponsesProps {
@@ -31,7 +30,11 @@ const Responses = ({ responses }: ResponsesProps) => {
     <Card title="Response">
       <div className={styles.responses}>
         {Object.entries(responses).map(([responseCode, response]) => (
-          <ResponseItem responseCode={responseCode} response={response} />
+          <ResponseItem
+            key={responseCode}
+            responseCode={responseCode}
+            response={response}
+          />
         ))}
       </div>
     </Card>

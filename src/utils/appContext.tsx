@@ -1,17 +1,25 @@
 import { createContext, useContext, useMemo } from "react";
 import { useSwaggerQuery } from "../api/swagger";
-import { Method, PathMethod, SwaggerResponse, Tag } from "../types/api.types";
+import {
+  Definition,
+  Method,
+  PathMethod,
+  SwaggerResponse,
+  Tag,
+} from "../types/api.types";
 
 interface AppContextInterface {
   data: SwaggerResponse | undefined;
   tags: Tag[];
   pathsGrouped: PathsByTag[];
+  definitions: Record<string, Definition>;
 }
 
 const AppContext = createContext<AppContextInterface>({
   data: undefined,
   tags: [],
   pathsGrouped: [],
+  definitions: {},
 });
 
 interface AppContextProviderProps {
@@ -47,8 +55,13 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     return tagsWithPath;
   }, [data]);
 
+  const definitions = useMemo(() => {
+    if (!data) return {};
+    return data.definitions;
+  }, [data]);
+
   return (
-    <AppContext.Provider value={{ data, tags, pathsGrouped }}>
+    <AppContext.Provider value={{ data, tags, pathsGrouped, definitions }}>
       {children}
     </AppContext.Provider>
   );

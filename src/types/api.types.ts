@@ -7,6 +7,25 @@ export interface SwaggerResponse {
   schemes: string[];
   paths: Record<string, Path>;
   securityDefinitions: Record<string, SecurityDefinition>;
+  definitions: Record<string, Definition>;
+}
+
+export interface Definition {
+  type: string;
+  properties: Record<string, DefinitionProperty>;
+}
+
+export interface DefinitionProperty {
+  type?: string;
+  format?: string;
+  $ref?: string;
+  example?: string;
+  xml?: {
+    wrapped: boolean;
+  };
+  items?: DefinitionProperty;
+  description?: string;
+  enum?: string[];
 }
 
 export interface SecurityDefinition {

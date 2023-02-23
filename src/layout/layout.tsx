@@ -1,6 +1,7 @@
 import { useAppContext } from "utils/appContext";
 import styles from "./layout.module.scss";
 import ReactMarkdown from "react-markdown";
+import Definitions from "components/definitions/definitions";
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -18,6 +19,9 @@ const Layout = ({ children }: LayoutProps) => {
         <ReactMarkdown>{info.description}</ReactMarkdown>
       </header>
       <div className={styles.content}>{children}</div>
+      <div className={styles.definitions}>
+        <Definitions />
+      </div>
       <div className={styles.footer}>
         <div className={styles.info}>
           <strong>terms of service</strong>
