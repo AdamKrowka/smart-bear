@@ -9,6 +9,7 @@ import {
 import cx from "classnames";
 import Parameters from "components/parameters/parameters";
 import Responses from "components/response/response";
+import { Link } from "react-router-dom";
 interface PathProps {
   path: string;
   methodName: string;
@@ -32,6 +33,7 @@ const MethodItem = ({ method, methodName, path }: PathProps) => {
           {method.deprecated && (
             <span className={styles.deprecated}>Deprecated</span>
           )}
+          <Link to={`${methodName}${path}`}>{path}</Link>
         </AccordionItemButton>
       </AccordionItemHeading>
       <AccordionItemPanel>

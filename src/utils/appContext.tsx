@@ -3,6 +3,7 @@ import { useSwaggerQuery } from "../api/swagger";
 import {
   Definition,
   Method,
+  Path,
   PathMethod,
   SwaggerResponse,
   Tag,
@@ -13,6 +14,7 @@ interface AppContextInterface {
   tags: Tag[];
   pathsGrouped: PathsByTag[];
   definitions: Record<string, Definition>;
+  paths: Record<string, Path>;
 }
 
 const AppContext = createContext<AppContextInterface>({
@@ -20,6 +22,7 @@ const AppContext = createContext<AppContextInterface>({
   tags: [],
   pathsGrouped: [],
   definitions: {},
+  paths: {},
 });
 
 interface AppContextProviderProps {
@@ -60,8 +63,15 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     return data.definitions;
   }, [data]);
 
+  const paths = useMemo(() => {
+    if (!data) return {};
+    return data.paths;
+  }, [data]);
+
   return (
-    <AppContext.Provider value={{ data, tags, pathsGrouped, definitions }}>
+    <AppContext.Provider
+      value={{ data, tags, pathsGrouped, definitions, paths }}
+    >
       {children}
     </AppContext.Provider>
   );

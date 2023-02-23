@@ -17,7 +17,10 @@
   border: 1px solid $grey200;
   gap: 12px;
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 1fr;
+  @include md {
+    grid-template-columns: 100px 1fr;
+  }
   .defInfo {
     display: flex;
     flex-direction: column;
@@ -36,9 +39,12 @@
     width: 100%;
     .property {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 12px;
+      grid-template-columns: 1fr;
+      @include md {
+        grid-template-columns: 100px 1fr;
+      }
       border-bottom: 1px solid $grey200;
+      gap: 12px;
       width: 100%;
 
       .propertyContent {
@@ -46,10 +52,15 @@
         margin: 12px 0;
         .enum {
           display: flex;
+          flex-direction: column;
+          @include md {
+            flex-direction: row;
+          }
           gap: 12px;
           .enumOptions {
             display: flex;
             gap: 6px;
+            flex-wrap: wrap;
           }
         }
       }

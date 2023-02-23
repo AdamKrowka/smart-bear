@@ -1,0 +1,13 @@
+@import "styles/globals.scss";
+
+.pathPage {
+  .paramsResponse {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}

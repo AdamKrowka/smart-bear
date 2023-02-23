@@ -1,15 +1,20 @@
+import PathPage from "pages/path/pathPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../pages/home/Home";
 
-const sitemap = {
+export const sitemap = {
   home: "/",
-  path: "/:path",
+  path: "/:method/*",
 };
 
 const router = createBrowserRouter([
   {
     element: <App />,
     path: sitemap.home,
+  },
+  {
+    element: <PathPage />,
+    path: sitemap.path,
   },
 ]);
 
