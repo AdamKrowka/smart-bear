@@ -7,7 +7,9 @@
     @include text(16, 600, 24, $grey900);
   }
 }
-
+.requestType {
+  @include text(14, 600, 20, $grey700);
+}
 .param {
   display: flex;
   justify-content: space-between;

@@ -1,6 +1,45 @@
 @import "styles/globals.scss";
 
 .pathPage {
+  h2 {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  p {
+    margin-bottom: 12px;
+  }
+  .methodName {
+    text-transform: capitalize;
+    &.get {
+      color: $blue500;
+    }
+    &.post {
+      color: $success500;
+    }
+    &.delete {
+      color: $error500;
+    }
+    &.put {
+      color: $warning500;
+    }
+  }
+
+  .copy {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 14px;
+    gap: 8px;
+    background: $blue500;
+    border: 1px solid $blue500;
+    box-shadow: $shadowSm;
+    border-radius: 8px;
+    @include text(14, 600, 20, $white);
+  }
   .paramsResponse {
     display: grid;
     grid-template-columns: 1fr;

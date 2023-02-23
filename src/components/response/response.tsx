@@ -5,6 +5,7 @@ import styles from "./response.module.scss";
 
 interface ResponsesProps {
   responses: Record<string, Response>;
+  produces?: string;
 }
 
 const ResponseItem = ({
@@ -25,9 +26,12 @@ const ResponseItem = ({
   );
 };
 
-const Responses = ({ responses }: ResponsesProps) => {
+const Responses = ({ responses, produces }: ResponsesProps) => {
   return (
     <Card title="Response">
+      {produces && (
+        <div className={styles.responseType}>Response Type: {produces}</div>
+      )}
       <div className={styles.responses}>
         {Object.entries(responses).map(([responseCode, response]) => (
           <ResponseItem

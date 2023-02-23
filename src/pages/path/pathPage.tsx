@@ -1,32 +1,55 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAppContext } from "utils/appContext";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Method } from "types/api.types";
-import Card from "components/card/card";
 import Parameters from "components/parameters/parameters";
 import Responses from "components/response/response";
 import styles from "./pathPage.module.scss";
+import cx from "classnames";
 
 const PathPage = () => {
+  const [isCopied, setIsCopied] = useState(false);
   const params = useParams();
   const { paths } = useAppContext();
 
-  const path = useMemo(() => {
-    if (!params["*"] || !params.method) return undefined;
-    const method = params.method as Method;
-
-    const pathUrl = `/${params["*"]}`;
-    console.log(pathUrl);
-    return paths[pathUrl][method];
+  const pathUrl = useMemo(() => {
+    return params["*"] ? `/${params["*"]}` : "";
   }, [params]);
+
+  const method = useMemo(() => {
+    return params.method as Method;
+  }, [params]);
+
+  const path = useMemo(() => {
+    return paths[pathUrl][method];
+  }, [method, pathUrl]);
+
+  const copy = () => {
+    navigator.clipboard.writeText(pathUrl);
+    setIsCopied(true);
+  };
   if (!path) return null;
   return (
     <div className={styles.pathPage}>
+      <h2>
+        <span className={cx(styles.methodName, styles[method])}>{method}</span>
+        {pathUrl}
+        <button type="button" className={styles.copy} onClick={copy}>
+          {isCopied ? "Copied" : "Copy path"}
+        </button>
+      </h2>
+      <p>{path.summary}</p>
+      {path.description && <p>{path.description}</p>}
       <div className={styles.paramsResponse}>
-        <Parameters parameters={path.parameters} />
-        <Responses responses={path.responses} />
+        <Parameters
+          parameters={path.parameters}
+          consumes={path.consumes.join(", ")}
+        />
+        <Responses
+          responses={path.responses}
+          produces={path.produces.join(", ")}
+        />
       </div>
-      <pre>{JSON.stringify(path, null, 4)}</pre>
     </div>
   );
 };

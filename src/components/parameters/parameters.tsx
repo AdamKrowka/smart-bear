@@ -6,6 +6,7 @@ import styles from "./parameters.module.scss";
 
 interface ParametersProps {
   parameters: Parameter[];
+  consumes?: string;
 }
 
 const Param = ({ param }: { param: Parameter }) => {
@@ -31,9 +32,12 @@ const Param = ({ param }: { param: Parameter }) => {
   );
 };
 
-const Parameters = ({ parameters }: ParametersProps) => {
+const Parameters = ({ parameters, consumes }: ParametersProps) => {
   return (
     <Card title="Parameters">
+      {consumes && (
+        <div className={styles.requestType}>Request Type: {consumes}</div>
+      )}
       <div className={styles.params}>
         {parameters.map((param) => (
           <Param param={param} key={param.name} />
