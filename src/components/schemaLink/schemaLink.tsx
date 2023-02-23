@@ -7,10 +7,17 @@ const SchemaLink = ({ schema }: { schema?: Schema }) => {
     if (!schema?.$ref) return "";
     return schema?.$ref.replaceAll("/", "");
   }, [schema]);
+  const schemaText = useMemo(
+    () => schemaPath.replace("#definitions", ""),
+    [schemaPath]
+  );
+
   if (!schema || !schemaPath) return null;
+
   return (
     <div className={styles.goToSchema}>
       <a href={schemaPath} title={schemaPath}>
+        {schemaText}
         <svg
           width="20"
           height="20"
