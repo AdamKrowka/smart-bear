@@ -1,31 +1,11 @@
-import { useMemo } from "react";
 import { useAppContext } from "utils/appContext";
 import styles from "./layout.module.scss";
+import ReactMarkdown from "react-markdown";
 interface LayoutProps {
   children: React.ReactNode;
 }
 const Layout = ({ children }: LayoutProps) => {
   const { data } = useAppContext();
-
-  const description = useMemo(() => {
-    if (!data) return "";
-    let newDesc = data.info.description;
-    const match = newDesc.matchAll(/\[[^\[\)]+\]\([^\[\)]+\)/g);
-    const array = [...match];
-    array.forEach((item) => {
-      const originalItemText = item[0];
-      const [text, url] = originalItemText
-        .substring(1, originalItemText.length - 1)
-        .split("](");
-
-      newDesc = newDesc.replace(
-        originalItemText,
-        `<a href='${url}'>${text}</a>`
-      );
-    });
-
-    return newDesc;
-  }, [data]);
 
   if (!data) return <div>Loading</div>;
   const { info } = data;
@@ -35,7 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
         <h1>
           {data.info.title} <span>Version: {info.version}</span>
         </h1>
-        <p dangerouslySetInnerHTML={{ __html: description }} />
+        <ReactMarkdown>{info.description}</ReactMarkdown>
       </header>
       <div className={styles.content}>{children}</div>
       <div className={styles.footer}>
