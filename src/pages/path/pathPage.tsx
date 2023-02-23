@@ -43,11 +43,11 @@ const PathPage = () => {
       <div className={styles.paramsResponse}>
         <Parameters
           parameters={path.parameters}
-          consumes={path.consumes.join(", ")}
+          consumes={path.consumes && path.consumes.join(", ")}
         />
         <Responses
           responses={path.responses}
-          produces={path.produces.join(", ")}
+          produces={path.produces && path.produces.join(", ")}
         />
       </div>
     </div>
