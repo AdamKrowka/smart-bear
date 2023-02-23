@@ -1,0 +1,29 @@
+@import "styles/globals.scss";
+
+.responses {
+  padding: 12px 24px;
+  h3 {
+    @include text(16, 600, 24, $grey900);
+  }
+}
+
+.response {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  .info {
+    .name {
+      @include text(14, 600, 20, $grey700);
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      .required {
+        @include text(11, 400, 18, $error600);
+      }
+    }
+    .type,
+    .description {
+      @include text(12, 400, 18, $grey700);
+    }
+  }
+}

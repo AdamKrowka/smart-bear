@@ -7,6 +7,8 @@ import {
   AccordionItemPanel,
 } from "react-accessible-accordion";
 import cx from "classnames";
+import Parameters from "components/parameters/parameters";
+import Responses from "components/response/response";
 interface PathProps {
   path: string;
   methodName: string;
@@ -32,8 +34,11 @@ const MethodItem = ({ method, methodName, path }: PathProps) => {
           )}
         </AccordionItemButton>
       </AccordionItemHeading>
-      <AccordionItemPanel className={styles.body}>
-        <pre>{JSON.stringify(method, null, 4)}</pre>
+      <AccordionItemPanel>
+        <div className={styles.body}>
+          <Parameters parameters={method.parameters} />
+          <Responses responses={method.responses} />
+        </div>
       </AccordionItemPanel>
     </AccordionItem>
   );

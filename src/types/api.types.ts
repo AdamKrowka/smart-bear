@@ -43,11 +43,13 @@ export interface PathMethod {
   security: Array<Record<string, Array<string>>>;
   deprecated?: boolean;
 }
+
+export interface Schema {
+  $ref: string;
+}
 export interface Response {
   description: string;
-  schema?: {
-    $ref: string;
-  };
+  schema?: Schema;
 }
 export interface Parameter {
   name: string;
@@ -56,6 +58,12 @@ export interface Parameter {
   required: boolean;
   type: string;
   format?: string;
+  schema?: Schema;
+  items?: {
+    type: string;
+    enum?: string[];
+    default?: string;
+  };
 }
 
 export interface Tag {

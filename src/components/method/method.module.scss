@@ -52,4 +52,13 @@
       }
     }
   }
+  .body {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 12px;
+    gap: 12px;
+    @include md {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 }
